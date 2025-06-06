@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@usewaypoint/email-builder": "^0.0.8",
     "vue": "^3.5.13"
   },
   "devDependencies": {
