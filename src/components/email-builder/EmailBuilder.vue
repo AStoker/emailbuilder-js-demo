@@ -1,7 +1,7 @@
-
 <script lang="ts" setup>
-import { type TReaderDocument } from '@usewaypoint/email-builder';
-import { Reader } from '@usewaypoint/email-builder';
+import { type TReaderDocument } from '@usewaypoint/email-builder'
+import { onMounted } from 'vue'
+import { ReactConnector } from '../ReactConnector'
 
 const CONFIGURATION: TReaderDocument = {
   root: {
@@ -31,12 +31,23 @@ const CONFIGURATION: TReaderDocument = {
       },
     },
   },
-};
+}
+
+onMounted(() => {
+  // This is where you can perform any setup after the component is mounted
+  console.log('EmailBuilder component mounted')
+
+  const reactComponent = new ReactConnector(document.getElementById('builder') as HTMLElement)
+  reactComponent.render({
+    configuration: CONFIGURATION,
+  })
+
+  console.log(reactComponent)
+})
 </script>
 
 <template>
-  <Reader :configuration="CONFIGURATION" />
+  <div id="builder"></div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
