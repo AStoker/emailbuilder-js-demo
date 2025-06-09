@@ -22,6 +22,7 @@ type ImportJsonDialogProps = {
 export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
   const [value, setValue] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [showExample, setShowExample] = useState(false);
 
   const handleChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = (ev) => {
     const v = ev.currentTarget.value;
@@ -36,54 +37,110 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
   }
 
   return (
+    <>
+      <Dialog open onClose={onClose}>
+        <DialogTitle>Import JSON</DialogTitle>
+        <form
+          onSubmit={(ev) => {
+            ev.preventDefault();
+            const { error, data } = validateJsonStringValue(value);
+            setError(error ?? null);
+            if (!data) {
+              return;
+            }
+            resetDocument(data);
+            onClose();
+          }}
+        >
+          <DialogContent>
+            <Typography color="text.secondary" paragraph>
+              Copy and paste an EmailBuilder.js JSON (
+              <Link
+                component="button"
+                type="button"
+                onClick={() => setShowExample(true)}
+                underline="none"
+              >
+                example
+              </Link>
+              ).
+            </Typography>
+            {errorAlert}
+            <TextField
+              error={error !== null}
+              value={value}
+              onChange={handleChange}
+              type="text"
+              helperText="This will override your current template."
+              variant="outlined"
+              fullWidth
+              rows={10}
+              multiline
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button type="button" onClick={onClose}>
+              Cancel
+            </Button>
+            <Button variant="contained" type="submit" disabled={error !== null}>
+              Import
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
+      
+      {showExample && (
+        <ExampleJsonDialog onClose={() => setShowExample(false)} />
+      )}
+    </>
+  );
+}
+
+function ExampleJsonDialog({ onClose }: { onClose: () => void }) {
+  return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Import JSON</DialogTitle>
-      <form
-        onSubmit={(ev) => {
-          ev.preventDefault();
-          const { error, data } = validateJsonStringValue(value);
-          setError(error ?? null);
-          if (!data) {
-            return;
-          }
-          resetDocument(data);
-          onClose();
-        }}
-      >
-        <DialogContent>
-          <Typography color="text.secondary" paragraph>
-            Copy and paste an EmailBuilder.js JSON (
-            <Link
-              href="https://gist.githubusercontent.com/jordanisip/efb61f56ba71bd36d3a9440122cb7f50/raw/30ea74a6ac7e52ebdc309bce07b71a9286ce2526/emailBuilderTemplate.json"
-              target="_blank"
-              underline="none"
-            >
-              example
-            </Link>
-            ).
-          </Typography>
-          {errorAlert}
-          <TextField
-            error={error !== null}
-            value={value}
-            onChange={handleChange}
-            type="text"
-            helperText="This will override your current template."
-            variant="outlined"
-            fullWidth
-            rows={10}
-            multiline
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button type="button" onClick={onClose}>
-            Cancel
-          </Button>
-          <Button variant="contained" type="submit" disabled={error !== null}>
-            Import
-          </Button>
-        </DialogActions>
-      </form>
+      <DialogTitle>Example JSON</DialogTitle>
+      <DialogContent>
+        <Typography color="text.secondary" paragraph>
+          This is an example of a valid EmailBuilder.js JSON.
+        </Typography>
+        <pre>
+          {`{
+  "root": {
+    "type": "EmailLayout",
+    "data": {
+      "backdropColor": "#F5F5F5",
+      "canvasColor": "#FFFFFF",
+      "textColor": "#262626",
+      "fontFamily": "MODERN_SANS",
+      "childrenIds": [
+        "block-1713199011299"
+      ]
+    }
+  },
+  "block-1713199011299": {
+    "type": "Text",
+    "data": {
+      "style": {
+        "fontWeight": "normal",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "text": "Hello world"
+      }
+    }
+  }
+}`}
+        </pre>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Close</Button>
+      </DialogActions>
     </Dialog>
   );
 }

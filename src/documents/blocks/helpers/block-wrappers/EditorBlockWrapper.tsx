@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties, JSX, useState } from 'react';
 
 import { Box } from '@mui/material';
 

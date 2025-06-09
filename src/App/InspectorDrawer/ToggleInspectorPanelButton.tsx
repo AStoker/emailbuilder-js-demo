@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AppRegistrationOutlined, LastPageOutlined } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 
 import { toggleInspectorDrawerOpen, useInspectorDrawerOpen } from '../../documents/editor/EditorContext';
 
@@ -13,14 +13,18 @@ export default function ToggleInspectorPanelButton() {
   };
   if (inspectorDrawerOpen) {
     return (
-      <IconButton onClick={handleClick}>
-        <LastPageOutlined fontSize="small" />
-      </IconButton>
+      <Tooltip title="Close inspector panel">
+        <IconButton onClick={handleClick}>
+          <LastPageOutlined fontSize="small" />
+        </IconButton>
+      </Tooltip>
     );
   }
   return (
-    <IconButton onClick={handleClick}>
-      <AppRegistrationOutlined fontSize="small" />
-    </IconButton>
+    <Tooltip title="Open inspector panel">
+      <IconButton onClick={handleClick}>
+        <AppRegistrationOutlined fontSize="small" />
+      </IconButton>
+    </Tooltip>
   );
 }
