@@ -1,0 +1,14 @@
+{
+  "name": "emailbuilder-webcomponent-test",
+  "version": "1.0.0",
+  "description": "Test page for EmailBuilder web component",
+  "main": "index.html",
+  "scripts": {
+    "serve": "cd .. && python3 -m http.server 8080",
+    "serve-node": "cd .. && npx http-server -p 8080 -c-1",
+    "test": "echo \"Open http://localhost:8080/sample/ in your browser\" && npm run serve"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

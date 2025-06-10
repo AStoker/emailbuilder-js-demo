@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailBuilder Web Component Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .test-section h2 {
+            margin-top: 0;
+            color: #555;
+        }
+        
+        email-builder {
+            display: block;
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EmailBuilder Web Component Test</h1>
+        
+        <div class="test-section">
+            <h2>Basic Web Component Test</h2>
+            <p>This should render the EmailBuilder as a web component:</p>
+            <div class="loading">Loading EmailBuilder...</div>
+            <email-builder></email-builder>
+        </div>
+        
+        <div class="test-section">
+            <h2>Multiple Instances Test</h2>
+            <p>Testing multiple instances of the web component:</p>
+            <div style="display: flex; gap: 20px;">
+                <div style="flex: 1;">
+                    <h3>Instance 1</h3>
+                    <email-builder style="height: 400px;"></email-builder>
+                </div>
+                <div style="flex: 1;">
+                    <h3>Instance 2</h3>
+                    <email-builder style="height: 400px;"></email-builder>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the built EmailBuilder web component -->
+    <script src="/dist/assets/index.js"></script>
+    
+    <script>
+        // Wait for the web component to be defined
+        customElements.whenDefined('email-builder').then(() => {
+            console.log('EmailBuilder web component is ready!');
+            
+            // Hide loading messages
+            document.querySelectorAll('.loading').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Add event listeners to test component interactions
+            document.querySelectorAll('email-builder').forEach((component, index) => {
+                component.addEventListener('change', (event) => {
+                    console.log(`EmailBuilder ${index + 1} changed:`, event.detail);
+                });
+            });
+        });
+        
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Error loading EmailBuilder:', event.error);
+        });
+    </script>
+</body>
+</html>

@@ -19,9 +19,9 @@ export function EmailBuilderApp() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <EmailBuilderApp />
-);
+// ReactDOM.createRoot(document.getElementById('root')!).render(
+//   <EmailBuilderApp />
+// );
 
 const EmailBuilderWebComponent = r2wc(EmailBuilderApp);
 customElements.define('email-builder', EmailBuilderWebComponent);
