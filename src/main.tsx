@@ -40,6 +40,9 @@ class EmailBuilderWebComponent extends HTMLElement {
 
     // Create a container div for React
     const container = document.createElement('div');
+    container.style.height = '100%';
+    container.style.overflow = 'auto';
+    container.id = 'email-builder-react-container';
     shadowRoot.appendChild(container);
 
     // Create React root and render

@@ -27,6 +27,24 @@ export default function InspectorDrawer() {
       variant="persistent"
       anchor="right"
       open={inspectorDrawerOpen}
+      slotProps={{
+        paper: {
+          style: {
+            position: 'absolute',
+          }
+        },
+        backdrop: {
+          style: {
+            position: 'absolute',
+          }
+        }
+      }}
+      ModalProps={{
+        container: document.getElementById('drawer-container') as HTMLElement,
+        style: {
+          position: 'absolute',
+        }
+      }}
       sx={{
         width: inspectorDrawerOpen ? INSPECTOR_DRAWER_WIDTH : 0,
       }}

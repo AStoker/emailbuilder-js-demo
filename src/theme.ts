@@ -110,6 +110,7 @@ const THEME = createTheme(BASE_THEME, {
     MuiDialog: {
       defaultProps: {
         fullWidth: true,
+        disablePortal: true,
       },
     },
     MuiDialogContent: {
@@ -210,6 +211,19 @@ const THEME = createTheme(BASE_THEME, {
           backgroundColor: alpha(BASE_THEME.palette.text.primary, 0.9),
         },
       },
+      defaultProps: {
+        disablePortal: true
+      }
+    },
+    MuiPopper: {
+      defaultProps: {
+        disablePortal: true,
+      }
+    },
+    MuiPopover: {
+      defaultProps: {
+        disablePortal: true
+      }
     },
     MuiSlider: {
       styleOverrides: {

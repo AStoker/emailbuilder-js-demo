@@ -12,7 +12,9 @@ import {
   Typography,
 } from '@mui/material';
 
-import { resetDocument } from '../../../documents/editor/EditorContext';
+import { resetDocument, useInspectorDrawerOpen } from '../../../documents/editor/EditorContext';
+import { INSPECTOR_DRAWER_WIDTH } from '../../InspectorDrawer';
+// TODO: Resume Wednesday. The height is off on the dialogs when the window is short.
 
 import validateJsonStringValue from './validateJsonStringValue';
 
@@ -23,6 +25,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
   const [value, setValue] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [showExample, setShowExample] = useState(false);
+  const inspectorDrawerOpen = useInspectorDrawerOpen();
 
   const handleChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = (ev) => {
     const v = ev.currentTarget.value;
@@ -36,9 +39,20 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
     errorAlert = <Alert color="error">{error}</Alert>;
   }
 
+  // Calculate the offset for centering in the available editor space
+  const dialogOffset = inspectorDrawerOpen ? -(INSPECTOR_DRAWER_WIDTH / 2) : 0;
+
   return (
     <>
-      <Dialog open onClose={onClose}>
+      <Dialog 
+        open 
+        onClose={onClose}
+        sx={{
+          '& .MuiDialog-container': {
+            transform: `translateX(${dialogOffset}px)`,
+          },
+        }}
+      >
         <DialogTitle>Import JSON</DialogTitle>
         <form
           onSubmit={(ev) => {
@@ -90,15 +104,34 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
       </Dialog>
       
       {showExample && (
-        <ExampleJsonDialog onClose={() => setShowExample(false)} />
+        <ExampleJsonDialog 
+          onClose={() => setShowExample(false)} 
+          inspectorDrawerOpen={inspectorDrawerOpen}
+        />
       )}
     </>
   );
 }
 
-function ExampleJsonDialog({ onClose }: { onClose: () => void }) {
+function ExampleJsonDialog({ 
+  onClose, 
+  inspectorDrawerOpen 
+}: { 
+  onClose: () => void; 
+  inspectorDrawerOpen: boolean;
+}) {
+  const dialogOffset = inspectorDrawerOpen ? -(INSPECTOR_DRAWER_WIDTH / 2) : 0;
+
   return (
-    <Dialog open onClose={onClose}>
+    <Dialog 
+      open 
+      onClose={onClose}
+      sx={{
+        '& .MuiDialog-container': {
+          transform: `translateX(${dialogOffset}px)`,
+        },
+      }}
+    >
       <DialogTitle>Example JSON</DialogTitle>
       <DialogContent>
         <Typography color="text.secondary" paragraph>

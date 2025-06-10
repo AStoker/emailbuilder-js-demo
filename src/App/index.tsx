@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack, useTheme } from '@mui/material';
+import { Box, Stack, useTheme } from '@mui/material';
 
 import { useInspectorDrawerOpen } from '../documents/editor/EditorContext';
 
@@ -28,16 +28,19 @@ export default function App() {
 
   return (
     <>
-      <InspectorDrawer />
+      <div id="drawer-container" style={{position: 'relative', overflow: 'hidden'}}>
+        <InspectorDrawer />
 
-      <Stack
-        sx={{
-          marginRight: inspectorDrawerOpen ? `${INSPECTOR_DRAWER_WIDTH}px` : 0,
-          transition: marginRightTransition,
-        }}
-      >
-        <TemplatePanel />
-      </Stack>
+        <Stack
+          sx={{
+            marginRight: inspectorDrawerOpen ? `${INSPECTOR_DRAWER_WIDTH}px` : 0,
+            transition: marginRightTransition,
+          }}
+        >
+          <TemplatePanel />
+        </Stack>
+
+      </div>
     </>
   );
 }
