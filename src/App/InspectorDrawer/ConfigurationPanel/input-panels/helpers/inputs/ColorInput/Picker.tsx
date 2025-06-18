@@ -1,9 +1,12 @@
-import React from 'react';
-import { HexColorInput, HexColorPicker } from 'react-colorful';
+import React, { useEffect, useRef } from 'react';
+// import { HexColorInput, HexColorPicker } from 'react-colorful';
+import 'vanilla-colorful';
+import { HexInput } from 'vanilla-colorful/hex-input';
 
 import { Box, Stack, SxProps } from '@mui/material';
 
 import Swatch from './Swatch';
+
 
 const DEFAULT_PRESET_COLORS = [
   '#E11D48',
@@ -76,11 +79,52 @@ type Props = {
 export default function Picker({ value, onChange }: Props) {
   return (
     <Stack spacing={1} sx={SX}>
-      <HexColorPicker color={value} onChange={onChange} />
+      {/* <HexColorPicker color={value} onChange={onChange} /> */}
+      <HexColorPickerWrapper color={value} onChange={onChange} />
       <Swatch paletteColors={DEFAULT_PRESET_COLORS} value={value} onChange={onChange} />
       <Box pt={1}>
-        <HexColorInput prefixed color={value} onChange={onChange} />
+        {/* <HexColorInput prefixed color={value} onChange={onChange} /> */}
       </Box>
     </Stack>
+  );
+}
+
+type HexColorPickerWrapperProps = {
+  color: string;
+  onChange: (v: string) => void;
+};
+
+function HexColorPickerWrapper({ color, onChange }: HexColorPickerWrapperProps) {
+  // const componentRef = useRef(null);
+
+  // useEffect(() => {
+  //   const webComponent = componentRef.current;
+    
+  //   const handleColorChange = (event: any) => {
+  //     console.log(event.detail.value);
+  //     onChange(event.detail.value);
+  //   };
+  //   if (webComponent) {
+  //     webComponent.addEventListener('color-changed', handleColorChange);
+  //   }
+
+  //   return () => {
+  //     if (webComponent) {
+  //       webComponent.removeEventListener('color-changed', handleColorChange);
+  //     }
+  //   };
+  // }, [onChange]);
+
+  return (
+    <>
+      <hex-color-picker
+        color={color}
+        onColorChanged={(event: CustomEvent) => {
+          console.log(event.detail.value);
+          onChange(event.detail.value);
+        }}
+      ></hex-color-picker>
+      <output>{color}</output>
+    </>
   );
 }

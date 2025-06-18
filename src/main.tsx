@@ -8,6 +8,16 @@ import App from './App';
 import theme from './theme';
 import { CacheProvider } from '@emotion/react';
 
+// Declaring some global JSX types to avoid TypeScript errors
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'hex-color-picker': any;
+      'hex-input': any;
+    }
+  }
+}
+
 export function EmailBuilderApp({ cache }: { cache: EmotionCache }) {
   return (
     <CacheProvider value={cache}>

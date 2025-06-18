@@ -15,6 +15,11 @@ import {
 import { resetDocument, useInspectorDrawerOpen } from '../../../documents/editor/EditorContext';
 import { INSPECTOR_DRAWER_WIDTH } from '../../InspectorDrawer';
 // TODO: Resume Wednesday. The height is off on the dialogs when the window is short.
+/* TODO:
+ Also need to do:
+ - color box doesn't expand properly
+ - Odd times selecting a container to add something to it the box doesn't get the right styles
+*/
 
 import validateJsonStringValue from './validateJsonStringValue';
 
