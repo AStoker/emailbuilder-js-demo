@@ -1,0 +1,233 @@
+{
+  "root": {
+    "type": "EmailLayout",
+    "data": {
+      "backdropColor": "#F5F5F5",
+      "canvasColor": "#FFFFFF",
+      "textColor": "#262626",
+      "fontFamily": "MODERN_SANS",
+      "childrenIds": [
+        "block-1749589245074",
+        "block-1749589284720",
+        "block-1749589380087",
+        "block-1749589488978",
+        "block-1749589538516",
+        "block-1749589549299"
+      ]
+    }
+  },
+  "block-1749589245074": {
+    "type": "Container",
+    "data": {
+      "style": {
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "left": 24,
+          "right": 24
+        }
+      },
+      "props": {
+        "childrenIds": []
+      }
+    }
+  },
+  "block-1749589284720": {
+    "type": "Container",
+    "data": {
+      "style": {
+        "backgroundColor": "#e2ebff",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "childrenIds": [
+          "block-1749589286935"
+        ]
+      }
+    }
+  },
+  "block-1749589286935": {
+    "type": "Text",
+    "data": {
+      "style": {
+        "color": "#0900af",
+        "fontSize": 19,
+        "fontWeight": "normal",
+        "textAlign": "center",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "text": "Update to the anticipated time of power restoration\n"
+      }
+    }
+  },
+  "block-1749589380087": {
+    "type": "Container",
+    "data": {
+      "style": {
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "left": 24,
+          "right": 24
+        }
+      },
+      "props": {
+        "childrenIds": [
+          "block-1749589382562",
+          "block-1749589397527",
+          "block-1749589430048",
+          "block-1749589452396"
+        ]
+      }
+    }
+  },
+  "block-1749589382562": {
+    "type": "Text",
+    "data": {
+      "style": {
+        "fontWeight": "normal",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "text": "Our anticipated time to restore power near %ADDRESS_STREET_NAME% has been adjusted."
+      }
+    }
+  },
+  "block-1749589397527": {
+    "type": "Text",
+    "data": {
+      "style": {
+        "fontWeight": "normal",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "text": "We now expect your power to be restored at %ITR%.\n\n"
+      }
+    }
+  },
+  "block-1749589430048": {
+    "type": "Text",
+    "data": {
+      "style": {
+        "fontWeight": "normal",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "text": "Thank you for your continued patience as we work to help improve reliability for you and your community."
+      }
+    }
+  },
+  "block-1749589452396": {
+    "type": "Html",
+    "data": {
+      "style": {
+        "fontSize": 16,
+        "textAlign": null,
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "contents": "We will provide additional updates if there are any further changes. If you would prefer to receive future updates by text or voice message, you can <a href=\"\">adjust your outage notification preferences.</a>"
+      }
+    }
+  },
+  "block-1749589488978": {
+    "type": "Container",
+    "data": {
+      "style": {
+        "backgroundColor": "#231e8f",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      },
+      "props": {
+        "childrenIds": [
+          "block-1749589510076"
+        ]
+      }
+    }
+  },
+  "block-1749589510076": {
+    "type": "Heading",
+    "data": {
+      "props": {
+        "text": "BUILDING A SMARTER ENERGY FUTURE"
+      },
+      "style": {
+        "color": "#FAFAFA",
+        "fontWeight": "normal",
+        "textAlign": "center",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      }
+    }
+  },
+  "block-1749589538516": {
+    "type": "Divider",
+    "data": {
+      "style": {
+        "backgroundColor": "#4F46E5",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 0,
+          "left": 0
+        }
+      },
+      "props": {
+        "lineColor": "#CCCCCC"
+      }
+    }
+  },
+  "block-1749589549299": {
+    "type": "Container",
+    "data": {
+      "style": {
+        "backgroundColor": "#4F46E5",
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "right": 24,
+          "left": 24
+        }
+      }
+    }
+  }
+}
